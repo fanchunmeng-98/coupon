@@ -96,8 +96,6 @@ public class CouponTemplateServiceImpl implements CouponTemplateServiceTCC {
                 .build();
 
         Pageable page = PageRequest.of(request.getPage(), request.getPageSize());
-        templateDao.findAll(Example.of(example), page);
-
         Page<CouponTemplate> result = templateDao.findAll(Example.of(example), page);
         List<CouponTemplateInfo> couponTemplateInfos = result.stream()
                 .map(CouponTemplateConverter::convertToTemplateInfo)
